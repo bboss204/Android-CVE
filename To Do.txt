@@ -4,6 +4,6 @@ Exigences :
 
 - l'application android ne charge que ce que demande l'utilisateur, de manière à ce qu'il y ait plus d'une connexion réseau (filtre de choix du coté android)
 
-- qu'il serait bon qu'il y ait au moins deux activités du coté android (la liste des cve et le détail qd on clique sur une par exemple)
+- Que l'application Android récupére les informations de la BdD depuis une page Web que l'on créé (non visible par user)
 
 - 
