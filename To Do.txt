@@ -1,0 +1,9 @@
+Exigences :
+
+- dois pouvoir changer le fichier d'entrée, pour autant qu'ils aient le bon format
+
+- l'application android ne charge que ce que demande l'utilisateur, de manière à ce qu'il y ait plus d'une connexion réseau (filtre de choix du coté android)
+
+- qu'il serait bon qu'il y ait au moins deux activités du coté android (la liste des cve et le détail qd on clique sur une par exemple)
+
+- 
