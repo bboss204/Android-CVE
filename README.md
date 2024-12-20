@@ -33,3 +33,6 @@ Hugo:
 
 
 Bastien:
+"C:\Program Files\VirtViewer v11.0-256\bin\remote-viewer.exe" --spice-ca-file=C:\Users\phcol\Documents\cacert.pem spice://10.3.100.11:24912?tls-port=24913
+
+mdp: e4FJWmcYnGrT8Tt
