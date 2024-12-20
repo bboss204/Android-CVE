@@ -1,0 +1,7 @@
+donne moi les classe necesaire pour executer les tache suivante:
+
+lire plus de 1000 fichier dans un dosier qui sont en .json ou dans chaque fichier on veut récupérer la variable: "product": xxxxxx ainsi que la variable "version": xxxxxx ainsi que la variable "cveId": xxxxxx
+
+Le code nécésaire pour mettre dans une base de donnée
+
+
