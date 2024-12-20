@@ -15,3 +15,8 @@ Application Android : L'application récupérera les données depuis le site web
 
 # Fichier source
 lien : https://www.cve.org/downloads
+
+# Virtuel
+"C:\Program Files\VirtViewer v11.0-256\bin\remote-viewer.exe" --spice-ca-file=C:\Users\bosch\OneDrive\Documents\Cours\2eme\cacert.pem spice://10.3.100.11:24912?tls-port=24913
+
+mdp: e4FJWmcYnGrT8Tt
