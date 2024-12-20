@@ -1,9 +1,12 @@
 Exigences :
 
+- Les fichiers JSON d'entrée doivent être lu par un programme JAVA
+
 - dois pouvoir changer le fichier d'entrée, pour autant qu'ils aient le bon format
 
 - l'application android ne charge que ce que demande l'utilisateur, de manière à ce qu'il y ait plus d'une connexion réseau (filtre de choix du coté android)
 
 - Que l'application Android récupére les informations de la BdD depuis une page Web que l'on créé (non visible par user)
 
-- 
+- Dans chaque CVE on récupére n informations pour les afficher à l'utilisateur
+
