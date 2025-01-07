@@ -43,6 +43,68 @@ Readjsonfile -> readfile, readjson, Transformfordatabase
 Database -> Connecttodatabase, savetoDatabase
 Main 
 
-
-
-
+# Info CVE
+"cveMetadata": {
+    "cveId": "CVE-2024-1002",
+        "state": "PUBLISHED",
+        "datePublished": "2024-01-29T14:00:06.271Z",
+        "dateUpdated": "2024-08-01T18:26:30.487Z"
+    },
+    "containers": {
+        "cna": {
+            "title": "Totolink N200RE cstecgi.cgi setIpPortFilterRules stack-based overflow",
+            "affected": [
+                {
+                    "vendor": "Totolink",
+                    "product": "N200RE",
+                    "versions": [
+                        {
+                            "version": "9.3.5u.6139_B20201216",
+                            "status": "affected"
+                        }
+                    ]
+                }
+            ],
+            "descriptions": [
+                {
+                    "lang": "en",
+                    "value": "A vulnerability classified as critical was found in Totolink N200RE 9.3.5u.6139_B20201216. Affected by this vulnerability is the function setIpPortFilterRules of the file /cgi-bin/cstecgi.cgi. The manipulation of the argument ePort leads to stack-based buffer overflow. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-252271. NOTE: The vendor was contacted early about this disclosure but did not respond in any way."
+                },
+            ],
+            "metrics": [
+                {
+                    "cvssV3_1": {
+                        "version": "3.1",
+                        "baseScore": 7.2,
+                    }
+                },
+                {
+                    "cvssV3_0": {
+                        "version": "3.0",
+                        "baseScore": 7.2,
+                    }
+                },
+                {
+                    "cvssV2_0": {
+                        "version": "2.0",
+                        "baseScore": 8.3,
+                    }
+                }
+            ],
+            "references": [
+                {
+                    "url": "https://vuldb.com/?id.252271",
+                    "tags": [
+                        "vdb-entry",
+                        "technical-description"
+                    ]
+                },
+                {
+                    "url": "https://jylsec.notion.site/TOTOLINK-N200RE-has-stack-buffer-overflow-vulnerability-in-setIpPortFilterRules-71c3f0a947e14b7f95fa19b7d6676994?pvs=4",
+                    "tags": [
+                        "exploit"
+                    ]
+                }
+            ]
+        },
+    }
