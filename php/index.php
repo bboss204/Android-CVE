@@ -1,9 +1,9 @@
 <?php   
-    include_once('../outils/bd.php');
+    include_once('db.php');
 
     try {
 
-# http://127.0.0.1/saedev/index.php?datePublished=2024-01-29
+# http://127.0.0.1/index.php?datePublished=2024-01-29&product=N200RE
         $datePublished = isset($_GET['datePublished']) ? htmlspecialchars($_GET['datePublished']) : null;
         $dateUpdated = isset($_GET['dateUpdated']) ? htmlspecialchars($_GET['dateUpdated']) : null;
         $title = isset($_GET['title']) ? htmlspecialchars($_GET['title']) : null;
@@ -15,15 +15,15 @@
         $conn = createConnection();
 
         $sqlcve = "SELECT * 
-                    FROM cve
-                    WHERE datePublished = :datePublished
-                    AND dateUpdated = :dateUpdated
-                    AND title LIKE :title
-                    AND cveID = :cveID
-                    AND vendor = :vendor
-                    AND product = :product
-                    AND version_product = :versionProduct;
-                    ";
+        FROM cve
+        WHERE (:datePublished IS NULL OR datePublished = :datePublished)
+        AND (:dateUpdated IS NULL OR dateUpdated = :dateUpdated)
+        AND (:title IS NULL OR title LIKE :title)
+        AND (:cveID IS NULL OR cveID = :cveID)
+        AND (:vendor IS NULL OR vendor = :vendor)
+        AND (:product IS NULL OR product = :product)
+        AND (:versionProduct IS NULL OR version_product = :versionProduct);
+        ";
         $stmtcve = $conn->prepare($sqlcve);
         $stmtcve->bindParam(':datePublished', $datePublished);
         $stmtcve->bindParam(':dateUpdated', $dateUpdated);
@@ -35,12 +35,10 @@
         $stmtcve->execute();
         $cve = $stmtcve->fetchAll();
        
-        if (!empty($results)) {
-            echo "<h3>Résultats :</h3><ul>";
-            foreach ($results as $row) {
-                echo "<li>" . htmlspecialchars(print_r($row, true)) . "</li>";
+        if (!empty($cve)) {
+            foreach ($cve as $row) {
+                echo htmlspecialchars(print_r($row, true));
             }
-            echo "</ul>";
         } else {
             echo "Aucun résultat trouvé.";
         }
