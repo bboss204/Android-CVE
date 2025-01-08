@@ -63,6 +63,10 @@ Main
 [PHP](./php)
 
 # Info CVE
+
+info d'un cve le plus basic: https://github.com/cveproject/cve-schema/blob/main/schema/docs/cnaContainer-basic-example.json
+
+
 "cveMetadata": {
     "cveId": "CVE-2024-1002",
         "state": "PUBLISHED",
