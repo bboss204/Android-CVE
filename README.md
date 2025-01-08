@@ -1,3 +1,14 @@
+# Présentation
+
+Nous vous présentons notre projet de recherche de cve basé sur une base de donnée. Projet réaliser par Hugo Bossou, Irwin Duprez-Bourgneuf, Bastien Losco, Mathis Boschian
+
+# Suivi
+
+JAVA -> database NON
+database OUI
+php OUI
+android studio NON
+
 # Android-CVE
 
 Les CVE (Common Vulnerabilities and Exposures) regroupent des défaillances et des vulnérabilités identifiables grâce à un identifiant unique, une version, un titre et une description pour chaque type de défaillance. 
@@ -42,6 +53,14 @@ mdp: e4FJWmcYnGrT8Tt
 Readjsonfile -> readfile, readjson, Transformfordatabase
 Database -> Connecttodatabase, savetoDatabase
 Main 
+
+# DATABASE
+
+[cve.sql](./cve.sql)
+
+# SITE WEB (PHP)
+
+[PHP](./php)
 
 # Info CVE
 "cveMetadata": {

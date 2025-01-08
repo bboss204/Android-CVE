@@ -36,6 +36,7 @@
         $cve = $stmtcve->fetchAll();
        
         if (!empty($cve)) {
+            echo "Nombre d'enregistrements récupérés : " . count($cve) . "<br>";
             foreach ($cve as $row) {
                 echo htmlspecialchars(print_r($row, true));
             }

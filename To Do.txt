@@ -1,5 +1,7 @@
 Exigences :
 
+- détailler le projet dans [README.md]
+
 - Les fichiers JSON d'entrée doivent être lu par un programme JAVA
 
 - dois pouvoir changer le fichier d'entrée, pour autant qu'ils aient le bon format
@@ -9,4 +11,5 @@ Exigences :
 - Que l'application Android récupére les informations de la BdD depuis une page Web que l'on créé (non visible par user)
 
 - Dans chaque CVE on récupére n informations pour les afficher à l'utilisateur
+
 
