@@ -13,7 +13,7 @@ public class Database {
         this.mdp = mdp;
     }
 
-    public void connect(String[] args) throws SQLException {
+    public void testConnect(String[] args) throws SQLException {
         try (Connection launchConnection = DriverManager.getConnection(this.url, this.utilisateur, this.mdp)) {
             System.out.println("Connexion réussie !");
         } catch (SQLException exception) {
@@ -21,4 +21,8 @@ public class Database {
             exception.printStackTrace();
         }
     }
+
+    public void enterSQL(String sql) throws SQLException {
+        connect(args);
+    } 
 }
