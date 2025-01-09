@@ -1,4 +1,6 @@
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Database {
     String url;
@@ -11,9 +13,12 @@ public class Database {
         this.mdp = mdp;
     }
 
-    public static void connect(String[] args) {
-        Connection launchConnection = null;
-
-        
+    public void connect(String[] args) throws SQLException {
+        try (Connection launchConnection = DriverManager.getConnection(this.url, this.utilisateur, this.mdp)) {
+            System.out.println("Connexion réussie !");
+        } catch (SQLException exception) {
+            System.out.println("Erreur de connexion !");
+            exception.printStackTrace();
+        }
     }
 }
