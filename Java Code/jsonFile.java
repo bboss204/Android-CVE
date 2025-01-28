@@ -6,6 +6,11 @@ public class jsonFile {
         this.chemin = chemin;
     }
 
+    public void read()throws Exeptions{
+        
+         
+    }
+
     
     
 }
