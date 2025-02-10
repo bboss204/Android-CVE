@@ -22,7 +22,13 @@ public class Database {
         }
     }
 
-    public void enterSQL(String sql) throws SQLException {
-        connect(args);
+    public void writeDB(String sql) throws SQLException {
+        try (Connection launchConnection = DriverManager.getConnection(this.url, this.utilisateur, this.mdp)) {
+            launchConnection.createStatement().executeUpdate(sql);
+            System.out.println("Requête effectuée !");
+        } catch (SQLException exception) {
+            System.out.println("Erreur de requête !");
+            exception.printStackTrace();
+        }
     } 
 }

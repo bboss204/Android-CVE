@@ -5,5 +5,7 @@
     ],
     "java.project.referencedLibraries": [
         "c:\\Users\\bboss\\Documents\\mysql-connector-j-9.1.0\\mysql-connector-j-9.1.0\\mysql-connector-j-9.1.0.jar"
-    ]
+    ],
+    "docker.make-runbook.openai-base": "Ollama",
+    "java.dependency.packagePresentation": "hierarchical"
 }
