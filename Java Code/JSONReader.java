@@ -1,6 +1,7 @@
 import java.io.FileReader;
 import java.io.IOException;
-import java.gson.Gson;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 
 public class JSONReader {
@@ -11,13 +12,23 @@ public class JSONReader {
         this.chemin = chemin;
     }
 
-    public CVE readcve_injson() throws IOException {
+    public JsonObject readcve_injson() throws IOException {
         try (FileReader fileReader = new FileReader(this.chemin)) {
-            // Parse the JSON file and return as a JsonObject
-            return gson.fromJson(fileReader, CVE.class);
+            // Parse the JSON file and return as a JsonObject*
+            return gson.fromJson(fileReader, JsonObject.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "erreur";
+        return null;
+    }
+
+    public static void main(String[] args) {
+        JSONReader reader = new JSONReader("C:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\2024\\0xxx\\CVE-2024-0001.json");
+        try {
+            JsonObject jsonObject = reader.readcve_injson(); 
+            System.out.println(jsonObject);
+        } catch (IOException e) {
+            e.printStackTrace();
+          }
     }
 }
