@@ -18,11 +18,11 @@ public class Database {
             System.out.println("Connexion réussie !");
         } catch (SQLException exception) {
             System.out.println("Erreur de connexion !");
-            exception.printStackTrace();
-        }
+                    exception.printStackTrace();
+                }       
     }
 
-    public static void initiate_androidCVE_DB(String[] args) {
+    public void initiate_androidCVE_DB(String[] args)throws SQLException {
         Connection launchConnection = DriverManager.getConnection(this.url, this.utilisateur, this.mdp);
         String sql_init = "CREATE TABLE `cve` (\r\n" +
                   "  `id` int(11) NOT NULL,\r\n" +
@@ -46,6 +46,7 @@ public class Database {
         } catch (SQLException exception) {
             System.out.println("Erreur de création de la base !");
             exception.printStackTrace();
+        }
     }
 
     public void writeDB(String sql) throws SQLException {

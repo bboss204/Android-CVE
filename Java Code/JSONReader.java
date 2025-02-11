@@ -1,19 +1,20 @@
 import java.io.FileReader;
 import java.io.IOException;
+import java.gson.Gson;
 
 
-public class JsonFile {
+public class JSONReader {
     String chemin;
+    Gson gson = new Gson();
 
-    public JsonFile(String chemin) {
+    public JSONReader(String chemin) {
         this.chemin = chemin;
     }
 
-    public JsonObject read() throws IOException {
+    public CVE readcve_injson() throws IOException {
         try (FileReader fileReader = new FileReader(this.chemin)) {
             // Parse the JSON file and return as a JsonObject
-            JsonParser parser = new JsonParser();
-            return parser.parse(fileReader);
+            return gson.fromJson(fileReader, CVE.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
