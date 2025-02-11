@@ -4,8 +4,9 @@
         "Java Code"
     ],
     "java.project.referencedLibraries": [
-        "c:\\Users\\bboss\\Documents\\mysql-connector-j-9.1.0\\mysql-connector-j-9.1.0\\mysql-connector-j-9.1.0.jar"
+        "c:\\Users\\bboss\\Documents\\mysql-connector-j-9.1.0\\mysql-connector-j-9.1.0\\mysql-connector-j-9.1.0.jar",
+        "Java Code/lib/gson-2.12.1.jar"
     ],
     "docker.make-runbook.openai-base": "Ollama",
-    "java.dependency.packagePresentation": "hierarchical"
+    "java.dependency.packagePresentation": "flat"
 }
