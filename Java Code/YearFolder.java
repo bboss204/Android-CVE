@@ -4,9 +4,6 @@ import java.util.List;
 
 public class YearFolder {
     String path;
-    File year;
-    File inFile;
-    File[] folldinYear;
     List<File> jscveFiles = new ArrayList<>();
 
 
@@ -24,9 +21,6 @@ public class YearFolder {
                 jscveFiles.add(inFile);
             }
         }
-        for (File f : jscveFiles) {
-            System.out.println(f);
-        }
         return jscveFiles;
     }
     
@@ -34,6 +28,9 @@ public class YearFolder {
     public static void main(String[] args) {
         YearFolder year = new YearFolder("C:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\2024");
         year.listfiles(new File(year.path));
+        for (File file : year.jscveFiles) {
+            System.out.println(file);
+        }
     }
     
 }
