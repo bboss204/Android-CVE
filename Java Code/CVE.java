@@ -1,5 +1,4 @@
 public class CVE {
-    private int id;
     private String cveID;
     private String state;
     private String datePublished;
@@ -15,11 +14,10 @@ public class CVE {
     private String exploit;
 
     // Constructeur
-    public CVE(int id, String cveID, String state, String datePublished, String dateUpdated, 
+    public CVE( String cveID, String state, String datePublished, String dateUpdated, 
                String title, String vendor, String product, String versionProduct, 
                String statusProduct, String descriptions, float cvssBaseScore, 
                String technicalDescription, String exploit) {
-        this.id = id;
         this.cveID = cveID;
         this.state = state;
         this.datePublished = datePublished;
@@ -40,9 +38,9 @@ public class CVE {
         return String.format(
             "INSERT INTO CVE (id, cveID, state, datePublished, dateUpdated, title, vendor, " +
             "product, version_product, status_product, descriptions, cvss_baseScore, " +
-            "technical_description, exploit) VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s', " +
+            "technical_description, exploit) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', " +
             "'%s', '%s', '%s', '%s', %.2f, '%s', '%s');",
-            id, escapeSQL(cveID), escapeSQL(state), datePublished, dateUpdated,
+            escapeSQL(cveID), escapeSQL(state), datePublished, dateUpdated,
             escapeSQL(title), escapeSQL(vendor), escapeSQL(product),
             escapeSQL(versionProduct), escapeSQL(statusProduct), escapeSQL(descriptions),
             cvssBaseScore, escapeSQL(technicalDescription), escapeSQL(exploit)
@@ -61,10 +59,10 @@ public class CVE {
     @Override
     public String toString() {
         return String.format(
-            "CVE{id=%d, cveID='%s', state='%s', datePublished='%s', dateUpdated='%s', title='%s', " +
+            "CVE{ cveID='%s', state='%s', datePublished='%s', dateUpdated='%s', title='%s', " +
             "vendor='%s', product='%s', versionProduct='%s', statusProduct='%s', descriptions='%s', " +
             "cvssBaseScore=%.2f, technicalDescription='%s', exploit='%s'}",
-            id, cveID, state, datePublished, dateUpdated, title, vendor, product,
+             cveID, state, datePublished, dateUpdated, title, vendor, product,
             versionProduct, statusProduct, descriptions, cvssBaseScore,
             technicalDescription, exploit
         );

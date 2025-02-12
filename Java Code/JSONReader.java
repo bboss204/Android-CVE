@@ -2,6 +2,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.*;
 
 
 public class JSONReader {
@@ -21,10 +22,9 @@ public class JSONReader {
         }
         return null;
     }
-
+ 
     public CVE JsonreaderToCVE(JsonObject jsonObject) {
-        int id = jsonObject.get("id").getAsInt();
-        String cveID = jsonObject.get("cveID").getAsString();
+        String cveID = jsonObject.get("cveMetadata").getAsString();
         String state = jsonObject.get("state").getAsString();
         String datePublished = jsonObject.get("datePublished").getAsString();
         String dateUpdated = jsonObject.get("dateUpdated").getAsString();
@@ -37,14 +37,15 @@ public class JSONReader {
         float cvssBaseScore = jsonObject.get("cvssBaseScore").getAsFloat();
         String technicalDescription = jsonObject.get("technicalDescription").getAsString();
         String exploit = jsonObject.get("exploit").getAsString();
-        return new CVE(id, cveID, state, datePublished, dateUpdated, title, vendor, product, versionProduct, statusProduct, descriptions, cvssBaseScore, technicalDescription, exploit);
+        return new CVE(cveID, state, datePublished, dateUpdated, title, vendor, product, versionProduct, statusProduct, descriptions, cvssBaseScore, technicalDescription, exploit);
     }
 
     public static void main(String[] args) {
         JSONReader reader = new JSONReader("C:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\2024\\0xxx\\CVE-2024-0001.json");
         try {
             JsonObject jsonObject = reader.readcve_injson(); 
-            System.out.println(jsonObject);
+            CVE cve1 = reader.JsonreaderToCVE(jsonObject);
+            System.out.println(cve1);
         } catch (IOException e) {
             e.printStackTrace();
           }

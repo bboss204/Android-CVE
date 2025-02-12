@@ -25,7 +25,7 @@ public class Database {
     public void initiate_androidCVE_DB(String[] args)throws SQLException {
         Connection launchConnection = DriverManager.getConnection(this.url, this.utilisateur, this.mdp);
         String sql_init = "CREATE TABLE `cve` (\r\n" +
-                  "  `id` int(11) NOT NULL,\r\n" +
+                  "  `id` int(11) NOT NULL AUTO_INCREMENT,\r\n" +
                   "  `cveID` text,\r\n" +
                   "  `state` text,\r\n" +
                   "  `datePublished` date DEFAULT NULL,\r\n" +
