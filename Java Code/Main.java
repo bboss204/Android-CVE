@@ -6,7 +6,11 @@ public class Main {
     public static void main(String[] args) {
         Database db = new Database("jdbc:mysql://localhost:3306/", "root", "test1234");
         YearFolder year = new YearFolder("C:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\2024");
-        
+        JsonReader reader = new JsonReader();
+        try {
+            print(year.listfiles(new File(yearpath)));
+        } catch (Exception e) {
+            e.printStackTrace();
         
         }
     }
