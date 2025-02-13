@@ -11,6 +11,7 @@
         $vendor = isset($_GET['vendor']) ? htmlspecialchars($_GET['vendor']) : null;
         $product = isset($_GET['product']) ? htmlspecialchars($_GET['product']) : null;
         $versionProduct = isset($_GET['version_product']) ? htmlspecialchars($_GET['version_product']) : null;
+        $versionProduct = isset($_GET['cvss_baseScore']) ? htmlspecialchars($_GET['cvss_baseScore']) : null;
 
         $conn = createConnection();
 
@@ -22,6 +23,7 @@
         AND (:cveID IS NULL OR cveID = :cveID)
         AND (:vendor IS NULL OR vendor = :vendor)
         AND (:product IS NULL OR product = :product)
+        AND (:cvss_baseScore IS NULL OR cvss_baseScore = :cvss_baseScore)
         AND (:versionProduct IS NULL OR version_product = :versionProduct);
         ";
         $stmtcve = $conn->prepare($sqlcve);
@@ -32,6 +34,7 @@
         $stmtcve->bindParam(':vendor', $vendor);
         $stmtcve->bindParam(':product', $product);
         $stmtcve->bindParam(':versionProduct', $versionProduct);
+        $stmtcve->bindParam(':cvss_baseScore', $cvss_baseScore);
         $stmtcve->execute();
         $cve = $stmtcve->fetchAll();
        
