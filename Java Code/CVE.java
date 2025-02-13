@@ -18,6 +18,12 @@ public class CVE {
                String title, String vendor, String product, String versionProduct, 
                String statusProduct, String descriptions, float cvssBaseScore, 
                String technicalDescription, String exploit) {
+                if (datePublished.contains("T")){
+                    datePublished = datePublished.substring(0, datePublished.indexOf("T"));
+                }
+                if (dateUpdated.contains("T")){
+                    dateUpdated = dateUpdated.substring(0, dateUpdated.indexOf("T"));
+                }
         this.cveID = cveID;
         this.state = state;
         this.datePublished = datePublished;
@@ -36,19 +42,28 @@ public class CVE {
     // Méthode pour générer une requête SQL INSERT
     public String toSQL() {
         return String.format(
-            "INSERT INTO CVE (id, cveID, state, datePublished, dateUpdated, title, vendor, " +
+            "INSERT INTO CVE (cveID, state, datePublished, dateUpdated, title, vendor, " +
             "product, version_product, status_product, descriptions, cvss_baseScore, " +
             "technical_description, exploit) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', " +
             "'%s', '%s', '%s', '%s', %.2f, '%s', '%s');",
-            escapeSQL(cveID), escapeSQL(state), datePublished, dateUpdated,
-            escapeSQL(title), escapeSQL(vendor), escapeSQL(product),
-            escapeSQL(versionProduct), escapeSQL(statusProduct), escapeSQL(descriptions),
-            cvssBaseScore, escapeSQL(technicalDescription), escapeSQL(exploit)
+            nullifnone(cveID), 
+            nullifnone(state), 
+            nullifnone(datePublished), 
+            nullifnone(dateUpdated),
+            nullifnone(title), 
+            nullifnone(vendor), 
+            nullifnone(product),
+            nullifnone(versionProduct), 
+            nullifnone(statusProduct), 
+            nullifnone(descriptions),
+            cvssBaseScore, 
+            nullifnone(technicalDescription), 
+            nullifnone(exploit)
         );
     }
 
     // Méthode pour échapper les caractères problématiques dans une requête SQL
-    private String escapeSQL(String value) {
+    private String nullifnone(String value) {
         if (value == null) {
             return "NULL";
         }
