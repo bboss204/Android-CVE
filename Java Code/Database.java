@@ -7,14 +7,22 @@ public class Database {
     String utilisateur;
     String mdp;
 
-    public Database(String urlOfDatabase, String utilisateur, String mdp) throws SQLException{
+    public Database(String urlOfDatabase, String utilisateur, String mdp) throws SQLException {
         this.url = urlOfDatabase;
         this.utilisateur = utilisateur;
         this.mdp = mdp;
         String dbName = this.url.substring(this.url.lastIndexOf("/") + 1);
-        String urlNoDBName = this.url.replace(dbName, ""); 
+        String urlNoDBName = this.url.replace(dbName, "");
+        
+        // Chargement explicite du driver MariaDB
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Driver MariaDB non trouvé", e);
+        }
+        
         Connection launchConnection = DriverManager.getConnection(urlNoDBName, this.utilisateur, this.mdp);
-        String sql_init_database = "CREATE DATABASE IF NOT EXISTS " + dbName + ";";
+        String sql_init_database = "CREATE DATABASE IF NOT EXISTS " + dbName;
         launchConnection.createStatement().executeUpdate(sql_init_database);
     }
 
@@ -23,35 +31,40 @@ public class Database {
             System.out.println("Connexion réussie !");
         } catch (SQLException exception) {
             System.out.println("Erreur de connexion !");
-                    exception.printStackTrace();
-                }       
+            exception.printStackTrace();
+        }      
     }
 
-    public void initiate_androidCVE_DB()throws SQLException {
+    public void initiate_androidCVE_DB() throws SQLException {
         Connection launchConnection = DriverManager.getConnection(this.url, this.utilisateur, this.mdp);
-        String sql_init_table = "CREATE TABLE IF NOT EXISTS `cve` (\r\n" +
-                  "  `id` int(11) NOT NULL AUTO_INCREMENT,\r\n" +
-                  "  `cveID` text,\r\n" +
-                  "  `state` text,\r\n" +
-                  "  `datePublished` DATETIME  DEFAULT NULL,\r\n" +
-                  "  `dateUpdated` DATETIME  DEFAULT NULL,\r\n" +
-                  "  `title` text,\r\n" +
-                  "  `vendor` text,\r\n" +
-                  "  `product` text,\r\n" +
-                  "  `version_product` text,\r\n" +
-                  "  `status_product` text,\r\n" +
-                  "  `descriptions` text,\r\n" +
-                  "  `cvss_baseScore` float DEFAULT NULL,\r\n" +
-                  "  `technical_description` text,\r\n" +
-                  "  `exploit` text,\r\n" +
-                  "PRIMARY KEY (`id`)\r\n" + 
-                  ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+        String sql_init_table = "CREATE TABLE IF NOT EXISTS `cve` (" +
+                "  `id` INT NOT NULL AUTO_INCREMENT," +
+                "  `cveID` TEXT," +
+                "  `state` TEXT," +
+                "  `datePublished` DATETIME DEFAULT NULL," +
+                "  `dateUpdated` DATETIME DEFAULT NULL," +
+                "  `title` TEXT," +
+                "  `vendor` TEXT," +
+                "  `product` TEXT," +
+                "  `version_product` TEXT," +
+                "  `status_product` TEXT," +
+                "  `descriptions` TEXT," +
+                "  `cvss_baseScore` FLOAT DEFAULT NULL," +
+                "  `technical_description` TEXT," +
+                "  `exploit` TEXT," +
+                "  PRIMARY KEY (`id`)" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+        
         try {
             launchConnection.createStatement().executeUpdate(sql_init_table);
             System.out.println("Table créée !");
         } catch (SQLException exception) {
             System.out.println("Erreur de création de la base !");
             exception.printStackTrace();
+        } finally {
+            if (launchConnection != null) {
+                launchConnection.close();
+            }
         }
     }
 
@@ -63,6 +76,5 @@ public class Database {
             System.out.println("Erreur de requête !");
             exception.printStackTrace();
         }
-    } 
-
+    }
 }

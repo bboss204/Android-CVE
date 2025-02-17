@@ -3,12 +3,12 @@ import java.sql.SQLException;
 
 import com.google.gson.JsonObject;
 
-//les condition pour que ce code marche sont que vous avez une base de donnée mysql et que vous avez un utilisateur root avec le mot de passe test1234
+//les condition pour que ce code marche sont que vous avez une base de donnée mysql et que vous avez un utilisateur rt avec le mot de passe rt
 public class Main {
 
     public static void main(String[] args) throws SQLException {
         String path = "C:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\2024";
-        Database db = new Database("jdbc:mysql://localhost:3306/android_cve", "root", "test1234");
+        Database db = new Database("jdbc:mariadb://localhost:3307/android_cve", "root", "rt");
         db.initiate_androidCVE_DB();
         YearFolder y2024 = new YearFolder(path);
         int id = 0;
@@ -25,6 +25,6 @@ public class Main {
             e.printStackTrace();
         
         }
-        system.out.println("Insertion terminée ! " + id + " entrées insérées");
+        System.out.println("Insertion terminée ! " + id + " entrées insérées");
     }
 }
