@@ -25,6 +25,6 @@ public class Main {
             e.printStackTrace();
         
         }
-        system.out.println("Insertion terminée ! " + id + " entrées insérées");
+        System.out.println("Insertion terminée ! " + id + " entrées insérées");
     }
 }

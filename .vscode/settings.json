@@ -4,8 +4,7 @@
         "Java Code"
     ],
     "java.project.referencedLibraries": [
-        "Java Code\\javaFiles\\mysql-connector-j-9.1.0\\mysql-connector-j-9.1.0.jar",
-        "c:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\gson-2.12.1.jar",
+        "Java Code/javaFiles/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar",
         "Java Code/javaFiles/gson-2.12.1.jar"
     ],
     "docker.make-runbook.openai-base": "Ollama",
