@@ -3,7 +3,7 @@ import java.sql.SQLException;
 
 import com.google.gson.JsonObject;
 
-//les condition pour que ce code marche sont que vous avez une base de donnée mysql et que vous avez un utilisateur root avec le mot de passe test1234
+//les condition pour que ce code marche sont que vous avez une base de donnée mysql et que vous avez un utilisateur rt avec le mot de passe rt
 public class Main {
 
     public static void main(String[] args) throws SQLException {
