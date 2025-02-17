@@ -6,7 +6,9 @@
     ],
     "java.project.referencedLibraries": [
         "c:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\Java Code\\javaFiles\\mysql-connector-j-9.1.0\\mysql-connector-j-9.1.0.jar",
-        "c:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\Java Code\\javaFiles\\gson-2.12.1.jar"
+        "c:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\Java Code\\javaFiles\\gson-2.12.1.jar",
+        "Java Code/javaFiles/mariadb-java-client-3.5.2.jar",
+        "Java Code/javaFiles/mysql-connector-j-9.1.0.jar"
     ],
     "docker.make-runbook.openai-base": "Ollama",
     "java.dependency.packagePresentation": "flat"

@@ -14,15 +14,9 @@ public class Database {
         String dbName = this.url.substring(this.url.lastIndexOf("/") + 1);
         String urlNoDBName = this.url.replace(dbName, "");
         
-        // Chargement explicite du driver MariaDB
-        try {
-            Class.forName("org.mariadb.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("Driver MariaDB non trouvé", e);
-        }
         
         Connection launchConnection = DriverManager.getConnection(urlNoDBName, this.utilisateur, this.mdp);
-        String sql_init_database = "CREATE DATABASE IF NOT EXISTS " + dbName;
+        String sql_init_database = "CREATE DATABASE IF NOT EXISTS " + dbName + ";";
         launchConnection.createStatement().executeUpdate(sql_init_database);
     }
 
