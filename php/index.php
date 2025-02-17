@@ -11,37 +11,44 @@
         $vendor = isset($_GET['vendor']) ? htmlspecialchars($_GET['vendor']) : null;
         $product = isset($_GET['product']) ? htmlspecialchars($_GET['product']) : null;
         $versionProduct = isset($_GET['version_product']) ? htmlspecialchars($_GET['version_product']) : null;
+        $versionProduct = isset($_GET['cvss_baseScore']) ? htmlspecialchars($_GET['cvss_baseScore']) : null;
 
-        $conn = createConnection();
+        if ($datePublished || $dateUpdated || $title || $cveID || $vendor || $product || $versionProduct || $cvss_baseScore) {
+            $conn = createConnection();
 
-        $sqlcve = "SELECT * 
-        FROM cve
-        WHERE (:datePublished IS NULL OR datePublished = :datePublished)
-        AND (:dateUpdated IS NULL OR dateUpdated = :dateUpdated)
-        AND (:title IS NULL OR title LIKE :title)
-        AND (:cveID IS NULL OR cveID = :cveID)
-        AND (:vendor IS NULL OR vendor = :vendor)
-        AND (:product IS NULL OR product = :product)
-        AND (:versionProduct IS NULL OR version_product = :versionProduct);
-        ";
-        $stmtcve = $conn->prepare($sqlcve);
-        $stmtcve->bindParam(':datePublished', $datePublished);
-        $stmtcve->bindParam(':dateUpdated', $dateUpdated);
-        $stmtcve->bindParam(':title', $title);
-        $stmtcve->bindParam(':cveID', $cveID);
-        $stmtcve->bindParam(':vendor', $vendor);
-        $stmtcve->bindParam(':product', $product);
-        $stmtcve->bindParam(':versionProduct', $versionProduct);
-        $stmtcve->execute();
-        $cve = $stmtcve->fetchAll();
-       
-        if (!empty($cve)) {
-            echo "Nombre d'enregistrements récupérés : " . count($cve) . "<br>";
-            foreach ($cve as $row) {
-                echo htmlspecialchars(print_r($row, true));
+            $sqlcve = "SELECT * 
+            FROM cve
+            WHERE (:datePublished IS NULL OR datePublished = :datePublished)
+            AND (:dateUpdated IS NULL OR dateUpdated = :dateUpdated)
+            AND (:title IS NULL OR title LIKE :title)
+            AND (:cveID IS NULL OR cveID = :cveID)
+            AND (:vendor IS NULL OR vendor = :vendor)
+            AND (:product IS NULL OR product = :product)
+            AND (:cvss_baseScore IS NULL OR cvss_baseScore = :cvss_baseScore)
+            AND (:versionProduct IS NULL OR version_product = :versionProduct);
+            ";
+            $stmtcve = $conn->prepare($sqlcve);
+            $stmtcve->bindParam(':datePublished', $datePublished);
+            $stmtcve->bindParam(':dateUpdated', $dateUpdated);
+            $stmtcve->bindParam(':title', $title);
+            $stmtcve->bindParam(':cveID', $cveID);
+            $stmtcve->bindParam(':vendor', $vendor);
+            $stmtcve->bindParam(':product', $product);
+            $stmtcve->bindParam(':versionProduct', $versionProduct);
+            $stmtcve->bindParam(':cvss_baseScore', $cvss_baseScore);
+            $stmtcve->execute();
+            $cve = $stmtcve->fetchAll();
+        
+            if (!empty($cve)) {
+                echo "Nombre d'enregistrements récupérés : " . count($cve) . "<br>";
+                foreach ($cve as $row) {
+                    echo htmlspecialchars(print_r($row, true));
+                }
+            } else {
+                echo "Aucun résultat trouvé.";
             }
         } else {
-            echo "Aucun résultat trouvé.";
+            echo "Aucun paramètre fourni.";
         }
     } catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
