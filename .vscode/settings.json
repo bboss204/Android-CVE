@@ -11,5 +11,7 @@
         "Java Code/javaFiles/mysql-connector-j-9.1.0.jar"
     ],
     "docker.make-runbook.openai-base": "Ollama",
-    "java.dependency.packagePresentation": "flat"
+    "java.dependency.packagePresentation": "flat",
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+    "java.project.explorer.showNonJavaResources": true
 }
