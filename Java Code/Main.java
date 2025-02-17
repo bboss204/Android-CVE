@@ -7,8 +7,8 @@ import com.google.gson.JsonObject;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        String path = "C:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\2024";
-        Database db = new Database("jdbc:mariadb://localhost:3307/android_cve", "root", "rt");
+        String path = ".\\2024";
+        Database db = new Database("jdbc:mariadb://localhost:3306/android_cve", "root", "rt");
         db.initiate_androidCVE_DB();
         YearFolder y2024 = new YearFolder(path);
         int id = 0;
