@@ -1,11 +1,12 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
     "java.project.sourcePaths": [
-        "Java Code"
+        "Java Code",
+        "Java Code\\javaFiles\\mariadb-connector-j-3.4.1"
     ],
     "java.project.referencedLibraries": [
-        "Java Code/javaFiles/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar",
-        "Java Code/javaFiles/gson-2.12.1.jar"
+        "c:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\Java Code\\javaFiles\\mysql-connector-j-9.1.0\\mysql-connector-j-9.1.0.jar",
+        "c:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\Java Code\\javaFiles\\gson-2.12.1.jar"
     ],
     "docker.make-runbook.openai-base": "Ollama",
     "java.dependency.packagePresentation": "flat"
