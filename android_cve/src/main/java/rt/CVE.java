@@ -1,3 +1,5 @@
+package rt;
+
 public class CVE {
     private String cveID;
     private String state;

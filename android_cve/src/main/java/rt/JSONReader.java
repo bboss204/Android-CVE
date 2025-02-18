@@ -1,5 +1,7 @@
+package rt;
 import java.io.FileReader;
 import java.io.IOException;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -16,7 +18,6 @@ public class JSONReader {
             // Parse the JSON file and return as a JsonObject
             return gson.fromJson(fileReader, JsonObject.class);
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return null;
     }
