@@ -25,8 +25,7 @@ public class Database {
         try (Connection launchConnection = DriverManager.getConnection(this.url, this.utilisateur, this.mdp)) {
             System.out.println("Connexion réussie !");
         } catch (SQLException exception) {
-            System.out.println("Erreur de connexion !");
-            exception.printStackTrace();
+            System.err.println("Erreur: " + exception.getMessage());
         }      
     }
 
@@ -54,8 +53,7 @@ public class Database {
             launchConnection.createStatement().executeUpdate(sql_init_table);
             System.out.println("Table créée !");
         } catch (SQLException exception) {
-            System.out.println("Erreur de création de la base !");
-            exception.printStackTrace();
+            System.err.println("Erreur de creation de la base: " + exception.getMessage());
         } finally {
             if (launchConnection != null) {
                 launchConnection.close();
@@ -68,8 +66,7 @@ public class Database {
             launchConnection.createStatement().executeUpdate(sql);
             System.out.println("Requête effectuée !");
         } catch (SQLException exception) {
-            System.out.println("Erreur de requête !");
-            exception.printStackTrace();
+            System.err.println("Erreur de requete : " + exception.getMessage());
         }
     }
 }

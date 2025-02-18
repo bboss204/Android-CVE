@@ -23,8 +23,7 @@ public class App {
                 db.writeDB(sql);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-        
+            System.err.println("Erreur: " + e.getMessage());
         }
         System.out.println("Insertion terminée ! " + id + " entrées insérées");
     }

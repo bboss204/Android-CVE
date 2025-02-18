@@ -1,14 +1,10 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
     "java.project.sourcePaths": [
-        "Java Code",
-        "Java Code\\javaFiles"
+        "android_cve",
+        "."
     ],
-    "java.project.referencedLibraries": [
-        "c:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\Java Code\\javaFiles\\mariadb-java-client-3.5.2.jar",
-        "c:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\Java Code\\javaFiles\\mysql-connector-j-9.1.0.jar",
-        "c:\\Users\\bboss\\Documents\\GitHub\\Android-CVE\\Java Code\\javaFiles\\gson-2.12.1.jar"
-    ],
+    "java.project.referencedLibraries": [],
     "docker.make-runbook.openai-base": "Ollama",
     "java.dependency.packagePresentation": "flat",
     "java.format.settings.url": ".vscode/java-formatter.xml",
