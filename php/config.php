@@ -1,8 +1,8 @@
 <?php
     $bdd = [
         "servername" => "localhost",
-        "username" => "root",
-        "password" => "root",
-        "dbname" => "cve",
+        "username" => "javacve",
+        "password" => "cve",
+        "dbname" => "android_cve",
     ];
 ?>
