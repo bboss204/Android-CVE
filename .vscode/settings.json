@@ -1,12 +1,12 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
     "java.project.sourcePaths": [
-        "Java Code"
+        "android_cve",
+        "."
     ],
-    "java.project.referencedLibraries": [
-        "Java Code/javaFiles/mysql-connector-j-9.1.0/mysql-connector-j-9.1.0.jar",
-        "Java Code/javaFiles/gson-2.12.1.jar"
-    ],
+    "java.project.referencedLibraries": [],
     "docker.make-runbook.openai-base": "Ollama",
-    "java.dependency.packagePresentation": "flat"
+    "java.dependency.packagePresentation": "flat",
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+    "java.project.explorer.showNonJavaResources": true
 }
