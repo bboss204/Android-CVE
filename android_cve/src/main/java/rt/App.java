@@ -4,11 +4,11 @@ import java.sql.SQLException;
 
 import com.google.gson.JsonObject;
 
-//les condition pour que ce code marche sont que vous avez une base de donnée mysql et que vous avez un utilisateur rt avec le mot de passe rt
+//les condition pour que ce code marche sont que vous avez une base de donnée mysql et que vous avez un utilisateur javacve avec le mot de passe cve
 public class App {
 
     public static void main(String[] args) throws SQLException {
-        String path = ".\\2024";
+        String path = "./2024";
         Database db = new Database("jdbc:mariadb://localhost:3306/android_cve", "javacve", "cve");
         db.initiate_androidCVE_DB();
         YearFolder y2024 = new YearFolder(path);

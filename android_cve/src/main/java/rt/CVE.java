@@ -44,7 +44,7 @@ public class CVE {
     // Méthode pour générer une requête SQL INSERT
     public String toSQL() {
         return String.format(
-            "INSERT INTO CVE (cveID, state, datePublished, dateUpdated, title, vendor, " +
+            "INSERT INTO cve (cveID, state, datePublished, dateUpdated, title, vendor, " +
             "product, version_product, status_product, descriptions, cvss_baseScore, " +
             "technical_description, exploit) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', " +
             "'%s', '%s', '%s', '%s', %.2f, '%s', '%s');",
