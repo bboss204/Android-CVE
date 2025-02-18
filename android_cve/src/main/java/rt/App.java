@@ -9,7 +9,7 @@ public class App {
 
     public static void main(String[] args) throws SQLException {
         String path = ".\\2024";
-        Database db = new Database("jdbc:mariadb://localhost:3306/android_cve", "root", "rt");
+        Database db = new Database("jdbc:mariadb://localhost:3307/android_cve", "javacve", "cve");
         db.initiate_androidCVE_DB();
         YearFolder y2024 = new YearFolder(path);
         int id = 0;
