@@ -40,7 +40,7 @@ CREATE TABLE `cve` (
   `status_product` text,
   `descriptions` text,
   `cvss_baseScore` float DEFAULT NULL,
-  `technical-description` text,
+  `technical_description` text,
   `exploit` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
