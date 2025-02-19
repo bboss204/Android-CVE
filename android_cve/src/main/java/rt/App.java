@@ -20,6 +20,7 @@ public class App {
                 JsonObject jsonObject = reader.readcve_injson();
                 CVE cve = reader.JsonreaderToCVE(jsonObject);
                 String sql = cve.toSQL();
+                System.out.println("sql: " + sql);  
                 db.writeDB(sql);
             }
         } catch (Exception e) {

@@ -1,5 +1,7 @@
 package rt;
 
+import java.util.Locale;
+
 public class CVE {
     private String cveID;
     private String state;
@@ -47,18 +49,18 @@ public class CVE {
             "INSERT INTO cve (cveID, state, datePublished, dateUpdated, title, vendor, " +
             "product, version_product, status_product, descriptions, cvss_baseScore, " +
             "technical_description, exploit) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', " +
-            "'%s', '%s', '%s', '%s', %.2f, '%s', '%s');",
+            "'%s', '%s', '%s', '%s', %s, '%s', '%s');",
             nullifnone(cveID), 
             nullifnone(state), 
-            nullifnone(datePublished), 
-            nullifnone(dateUpdated),
+            formatDateValue(datePublished), 
+            formatDateValue(dateUpdated),
             nullifnone(title), 
             nullifnone(vendor), 
             nullifnone(product),
             nullifnone(versionProduct), 
             nullifnone(statusProduct), 
             nullifnone(descriptions),
-            cvssBaseScore, 
+            String.format(Locale.US, "%.2f", cvssBaseScore), 
             nullifnone(technicalDescription), 
             nullifnone(exploit)
         );
@@ -66,10 +68,21 @@ public class CVE {
 
     // Méthode pour échapper les caractères problématiques dans une requête SQL
     private String nullifnone(String value) {
-        if (value == null) {
+        if (value == null || value.isEmpty() || value.equals("n/a")) {
             return "NULL";
         }
-        return value.replace("'", "''"); // Échappe les apostrophes pour éviter les erreurs SQL
+        // Nettoyage des caractères spéciaux et échappement des apostrophes
+        return value.replace("'", "''")
+                    .replace("â?", "'")
+                    .replace("\n", " ")  // Remplace les sauts de ligne par des espaces
+                    .replace("\r", "");  // Supprime les retours chariot
+    }
+    
+    private String formatDateValue(String date) {
+        if (date == null || date.isEmpty()) {
+            return "NULL";
+        }
+        return date ; 
     }
 
     // Méthode toString() pour afficher l'objet facilement
