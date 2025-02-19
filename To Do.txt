@@ -1,15 +1,21 @@
-Exigences :
+apt install apache2
+apt intall mysql
+apt install php-common libapache2-mod-php php-cli 
+systemctl start apache2 
+systemctl start mysql 
+mysql
+metre ce code dans mysql 
 
-- détailler le projet dans [README.md]
+CREATE USER 'javacve'@'localhost' IDENTIFIED BY 'cve'; 
+GRANT ALL PRIVILEGES ON . TO 'javacve'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
 
-- Les fichiers JSON d'entrée doivent être lu par un programme JAVA
+sur github avec ce lien on va recup les fichier du site web :
+cd ./Téléchargements 
+git clone https://github.com/Ohpapy/Android-CVE.git
+cd Android-CVE/php/
+cp ./config.php /var/www/html
+cp ./db.php /var/www/html
+cp ./index.php /var/www/html
 
-- dois pouvoir changer le fichier d'entrée, pour autant qu'ils aient le bon format
-
-- l'application android ne charge que ce que demande l'utilisateur, de manière à ce qu'il y ait plus d'une connexion réseau (filtre de choix du coté android)
-
-- Que l'application Android récupére les informations de la BdD depuis une page Web que l'on créé (non visible par user)
-
-- Dans chaque CVE on récupére n informations pour les afficher à l'utilisateur
-
-
+java -jar Android-CVE.jar
