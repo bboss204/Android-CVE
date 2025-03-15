@@ -1,133 +1,87 @@
-# Présentation
+# Android-CVE - Recherche de Vulnérabilités CVE
 
-Nous vous présentons notre projet de recherche de cve basé sur une base de donnée. Projet réaliser par Hugo Bossou, Irwin Duprez-Bourgneuf, Bastien Losco, Mathis Boschian
+## 📌 Présentation
 
-# Suivi
+Android-CVE est une application permettant de rechercher des vulnérabilités issues de la base de données **MITRE CVE**. Ce projet a initialement été réalisé par **Hugo B., Irwin D.-B., Bastien L. et Mathis B.** Il est maintenant maintenu en solo.
 
-JAVA -> database NON
-database OUI
-php OUI
-android studio NON
+L'application repose sur un système **client-serveur** avec :
 
-# Android-CVE
+- 🖥️ **Un backend en Java** qui récupère les données JSON de MITRE et les stocke dans une base de données.
+- 🌐 **Une API en PHP** qui permet d'interroger la base de données selon les requêtes utilisateur.
+- 📱 **Une application Android** développée sous Android Studio qui affiche les informations de vulnérabilités.
 
-Les CVE (Common Vulnerabilities and Exposures) regroupent des défaillances et des vulnérabilités identifiables grâce à un identifiant unique, une version, un titre et une description pour chaque type de défaillance. 
+## 🎯 Objectif du projet
 
-L'objectif de notre projet est de créer une application Android permettant aux utilisateurs de rechercher une faille spécifique. Cette application disposera d'une base de données contenant toutes les défaillances recensées provenant du sit : https://cve.mitre.org/
+L'objectif principal est de fournir une application permettant aux utilisateurs de **rechercher des vulnérabilités** (également appelées **CVE**) enregistrées sur la base de données **MITRE**.
 
-Chaque CVE correspond à une défaillance spécifique, classée selon plusieurs échelles. La base de données inclut toutes les CVE publiées uniquement pour l’année 2024.
-Un fichier (JSON) contient la liste de toutes les CVE et sera lisible par l'application.  Ces données seront ensuite transmises à une base de données qui communiquera avec l'application.
-L'application associera les versions d'Android des utilisateurs aux types de CVE correspondants. Une base de données contenant les versions permettra de comparer les recherches des utilisateurs avec les données disponibles. Ainsi, lorsqu'un utilisateur effectue une recherche en fonction de  la date, l’application une comparaison sera effectuée avec les mots-clés enregistrés dans la base de données.
-Plan d'action :
-Fichier source : Préparer un fichier contenant toutes les CVE (plus de 1000 entrées).
-Traitement des données : Un programme Java récupérera les données et les transmettra à une base de données.
-Mise à disposition : La base de données renvoie ces informations disponibles via un site web, au format JSON.
-Application Android : L'application récupérera les données depuis le site web et les affichera à l'utilisateur.
+L'application permet :
 
-# Fichier source
-lien : https://www.cve.org/downloads
+- 🔍 La consultation des CVE par **identifiant, date ou mots-clés**.
+- 🔗 L'association des versions d'Android des utilisateurs avec les **CVE correspondantes**.
+- 📄 L'affichage d'**informations détaillées** sur chaque vulnérabilité.
 
-# Virtuel
+## 🏗️ Architecture du projet
 
-mathis :
-"C:\Program Files\VirtViewer v11.0-256\bin\remote-viewer.exe" --spice-ca-file=C:\Users\bosch\Documents\cours\cacert.pem spice://10.3.100.11:24912?tls-port=24913
+### 🛠️ 1. Extraction et traitement des données
 
-mdp: e4FJWmcYnGrT8Tt
+- 📥 Récupération des données depuis **MITRE** sous format **JSON**.
+- 🗄️ Stockage des informations dans une **base de données SQL**.
+- 🔄 Traitement et structuration des données via un programme **Java**.
 
-Irwin:
+### 🌐 2. API PHP
 
-"C:\Program Files\VirtViewer v11.0-256\bin\remote-viewer.exe" --spice-ca-file=C:\Users\irwin\Documents\Irwin\cacert.pem spice://10.3.100.11:24912?tls-port=24913
+- 📡 Fournit des **endpoints** permettant d'interroger la base de données.
+- 🔄 Répond aux requêtes de l'application mobile.
 
-mdp: e4FJWmcYnGrT8Tt
+### 📱 3. Application Android
 
-Hugo:
+- 📡 Effectue des **requêtes à l'API PHP**.
+- 📊 Affiche les **résultats des recherches** à l'utilisateur.
+- 🔗 Compare les **versions d'Android aux CVE correspondantes**.
 
+## 🛠️ Technologies utilisées
 
-Bastien:
-"C:\Program Files\VirtViewer v11.0-256\bin\remote-viewer.exe" --spice-ca-file=C:\Users\phcol\Documents\cacert.pem spice://10.3.100.11:24912?tls-port=24913
+- **Backend** : Java, JDBC pour la gestion de la base de données.
+- **Base de données** : MySQL
+- **API** : PHP, SQL
+- **Frontend** : Java (Android Studio)
 
-mdp: e4FJWmcYnGrT8Tt
+## 📂 Organisation du code
 
-# les class en java -> les fonctions
+### 🔹 1. Backend Java
 
-Readjsonfile -> readfile, readjson, Transformfordatabase
-Database -> Connecttodatabase, savetoDatabase
-Main 
+- `ReadJsonFile` : 📜 Traitement des fichiers JSON (**lecture et transformation** pour insertion en base).
+- `Database` : 🗄️ Gestion des **connexions et stockage des données**.
+- `Main` : 🚀 **Lancement principal** de l'application backend.
 
-# DATABASE
+### 🔹 2. Base de données
 
-[cve.sql](./cve.sql)
+- 📑 Schéma SQL disponible ici : [cve.sql](./cve.sql)
 
-# SITE WEB (PHP)
+### 🔹 3. API PHP
 
-[PHP](./php)
+- 📜 Code source disponible ici : [PHP](./php)
 
-# Info CVE
+### 🔹 4. Informations CVE
 
-info d'un cve le plus basic: https://github.com/cveproject/cve-schema/blob/main/schema/docs/cnaContainer-basic-example.json
+- 📄 Exemple de schéma JSON pour une CVE : [Exemple CVE JSON](https://github.com/cveproject/cve-schema/blob/main/schema/docs/cnaContainer-basic-example.json)
 
+## 🌍 Source des CVE
 
-"cveMetadata": {
-    "cveId": "CVE-2024-1002",
-        "state": "PUBLISHED",
-        "datePublished": "2024-01-29T14:00:06.271Z",
-        "dateUpdated": "2024-08-01T18:26:30.487Z"
-    },
-    "containers": {
-        "cna": {
-            "title": "Totolink N200RE cstecgi.cgi setIpPortFilterRules stack-based overflow",
-            "affected": [
-                {
-                    "vendor": "Totolink",
-                    "product": "N200RE",
-                    "versions": [
-                        {
-                            "version": "9.3.5u.6139_B20201216",
-                            "status": "affected"
-                        }
-                    ]
-                }
-            ],
-            "descriptions": [
-                {
-                    "lang": "en",
-                    "value": "A vulnerability classified as critical was found in Totolink N200RE 9.3.5u.6139_B20201216. Affected by this vulnerability is the function setIpPortFilterRules of the file /cgi-bin/cstecgi.cgi. The manipulation of the argument ePort leads to stack-based buffer overflow. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-252271. NOTE: The vendor was contacted early about this disclosure but did not respond in any way."
-                },
-            ],
-            "metrics": [
-                {
-                    "cvssV3_1": {
-                        "version": "3.1",
-                        "baseScore": 7.2,
-                    }
-                },
-                {
-                    "cvssV3_0": {
-                        "version": "3.0",
-                        "baseScore": 7.2,
-                    }
-                },
-                {
-                    "cvssV2_0": {
-                        "version": "2.0",
-                        "baseScore": 8.3,
-                    }
-                }
-            ],
-            "references": [
-                {
-                    "url": "https://vuldb.com/?id.252271",
-                    "tags": [
-                        "vdb-entry",
-                        "technical-description"
-                    ]
-                },
-                {
-                    "url": "https://jylsec.notion.site/TOTOLINK-N200RE-has-stack-buffer-overflow-vulnerability-in-setIpPortFilterRules-71c3f0a947e14b7f95fa19b7d6676994?pvs=4",
-                    "tags": [
-                        "exploit"
-                    ]
-                }
-            ]
-        },
-    }
+Les CVE sont disponibles à l'adresse suivante : [🔗 CVE MITRE](https://www.cve.org/downloads)
+
+## 🚀 Statut d'avancement
+
+- ✅ **Backend Java** : En cours de finalisation
+- ✅ **Base de données** : Complète
+- ✅ **API PHP** : Fonctionnelle
+- 🔄 **Application Android** : En cours de développement
+
+## 🔒 Accès distant (Virtuel)
+
+*📌 Informations d'accès retirées pour raisons de sécurité.*
+
+---
+
+💡 Ce projet est toujours en cours d'amélioration. **N'hésitez pas à proposer des contributions ou à signaler des problèmes !** 🚀
+
